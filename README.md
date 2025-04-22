@@ -78,7 +78,20 @@ cd go-rajaongkir-location
 go mod tidy
 ```
 
-3. **Run the server**
+3. **Setup environment variables**
+
+Copy the example environment file and adjust values as needed:
+```bash
+cp .env.example .env
+```
+
+Default rate limiting values:
+```env
+RATE_REQUEST=10
+RATE_MINUTE=1
+```
+
+4. **Run the server**
 ```bash
 go run main.go
 ```
