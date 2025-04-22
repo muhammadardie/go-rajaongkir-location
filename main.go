@@ -1,9 +1,9 @@
 package main
 
 import (
+	"go-rajaongkir-location/config"
+	"go-rajaongkir-location/routes"
 	"log"
-	"rajaongkir-wrapper/config"
-	"rajaongkir-wrapper/routes"
 
 	"github.com/gin-gonic/gin"
 )

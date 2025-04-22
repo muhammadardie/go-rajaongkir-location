@@ -34,22 +34,9 @@ func GetAllProvinces(c *gin.Context) {
 		})
 	}
 
-	response.SuccessResponse(c, result)
-}
-
-func GetProvinceByID(c *gin.Context) {
-	id := c.Param("id")
-
-	var province models.Province
-
-	if err := config.DB.Where("province_id = ?", id).First(&province).Error; err != nil {
-		response.ErrorResponse(c, "Province not found", http.StatusNotFound)
+	if id != "" && len(result) == 1 {
+		response.SuccessResponse(c, result[0])
 		return
-	}
-
-	result := dto.ProvinceResponse{
-		ProvinceID:   fmt.Sprintf("%d", province.ProvinceID),
-		ProvinceName: province.ProvinceName,
 	}
 
 	response.SuccessResponse(c, result)

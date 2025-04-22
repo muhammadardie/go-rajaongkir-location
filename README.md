@@ -23,14 +23,9 @@ It’s ideal for internal use or as a drop-in replacement where RajaOngkir’s f
 
 All responses are wrapped in a `rajaongkir` object just like the original API.
 
-### 🔍 Get All Provinces
+### 🔍 Get All Provinces (with optional filter by ID)
 ```
-GET /province
-```
-
-### 🔍 Get Province by ID
-```
-GET /province/:id
+GET /province?id={province_id}
 ```
 
 ### 🔍 Get All Cities (with optional province filter)
@@ -58,7 +53,11 @@ GET /subdistrict?city={city_id}
       {
         "province_id": "1",
         "province_name": "Bali"
-      }
+      },
+      {
+          "province_id": "2",
+          "province": "Bangka Belitung"
+      },
     ]
   }
 }

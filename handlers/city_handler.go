@@ -52,5 +52,10 @@ func GetAllCity(c *gin.Context) {
 		})
 	}
 
+	if id != "" && len(result) == 1 {
+		response.SuccessResponse(c, result[0])
+		return
+	}
+
 	response.SuccessResponse(c, result)
 }
