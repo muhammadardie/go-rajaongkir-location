@@ -5,6 +5,7 @@ import (
 	"go-rajaongkir-location/middleware"
 	"go-rajaongkir-location/routes"
 	"log"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
@@ -23,7 +24,12 @@ func main() {
 	router.SetTrustedProxies(nil)
 	routes.SetupRoutes(router)
 
-	if err := router.Run(":8080"); err != nil {
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "5000" // default port if not set
+	}
+
+	if err := router.Run(":" + port); err != nil {
 		log.Fatal("Failed to start server: ", err)
 	}
 }
