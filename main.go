@@ -22,6 +22,9 @@ func main() {
 	router := gin.Default()
 	router.Use(rateLimiter.RateLimit())
 	router.Use(middleware.UmamiAnalyticsMiddleware())
+
+	router.Use(middleware.AuthMiddleware())
+
 	router.SetTrustedProxies(nil)
 	routes.SetupRoutes(router)
 
