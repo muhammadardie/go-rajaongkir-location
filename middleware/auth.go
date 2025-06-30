@@ -19,7 +19,7 @@ func AuthMiddleware() gin.HandlerFunc {
 	}
 
 	return func(c *gin.Context) {
-		apiKey := c.GetHeader("X-API-KEY")
+		apiKey := c.GetHeader("key")
 		if apiKey == "" || apiKey != requiredAPIKey {
 			response.ErrorResponse(c, "Invalid or missing API key", http.StatusUnauthorized)
 			c.Abort()
