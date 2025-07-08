@@ -46,8 +46,6 @@ GET /subdistrict?city={city_id}
 
 ### 💰 Calculate Shipping Cost (v1 API Compatible)
 
-This endpoint require `RAJAONGKIR_V2_API_KEY` to be set in `.env` for calculate cost using RajaOngkir's v2 API
-
 ```
 POST /cost
 Content-Type: application/x-www-form-urlencoded
