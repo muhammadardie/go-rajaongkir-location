@@ -4,7 +4,7 @@ package dto
 type CostRequest struct {
 	Origin          string `form:"origin" binding:"required"`
 	Destination     string `form:"destination" binding:"required"`
-	Weight          string `form:"weight" binding:"required"`
+	Weight          int    `form:"weight" binding:"required"`
 	Courier         string `form:"courier" binding:"required"`
 	OriginType      string `form:"originType"`
 	DestinationType string `form:"destinationType"`

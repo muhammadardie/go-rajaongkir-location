@@ -71,8 +71,7 @@ func GetCost(c *gin.Context) {
 	}
 
 	// Validate weight
-	weight, err := strconv.Atoi(req.Weight)
-	if err != nil || weight <= 0 {
+	if req.Weight <= 0 {
 		response.ErrorResponse(c, "Invalid weight. Must be a positive integer", http.StatusBadRequest)
 		return
 	}
@@ -92,9 +91,10 @@ func GetCost(c *gin.Context) {
 
 	// Map courier name for v2 API
 	v2Courier := mapCouriersForV2(req.Courier)
+	weight := strconv.Itoa(req.Weight)
 
 	// Call RajaOngkir API v2
-	v2Response, err := callRajaOngkirV2(apiKey, originPostalCode, destinationPostalCode, req.Weight, v2Courier)
+	v2Response, err := callRajaOngkirV2(apiKey, originPostalCode, destinationPostalCode, weight, v2Courier)
 	if err != nil {
 		log.Printf(`{"level":"error","msg":"callRajaOngkirV2 failed","error":"%v"}`, err)
 		response.ErrorResponse(c, "Failed to get cost data: "+err.Error(), http.StatusInternalServerError)
